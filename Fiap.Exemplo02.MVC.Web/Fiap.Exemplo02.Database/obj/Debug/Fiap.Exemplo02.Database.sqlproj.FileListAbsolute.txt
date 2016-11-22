@@ -1,9 +1,5 @@
 D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\bin\Debug\Fiap.Exemplo02.Database.dacpac
 D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\bin\Debug\Fiap.Exemplo02.Database.dll
 D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\bin\Debug\Fiap.Exemplo02.Database.pdb
-D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\Model.xml
-D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\refactor.xml
-D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\postdeploy.sql
-D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\predeploy.sql
 D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\Fiap.Exemplo02.Database.dll
 D:\Fiap.Exemplo02.MVC.Web-master\Fiap.Exemplo02.MVC.Web\Fiap.Exemplo02.Database\obj\Debug\Fiap.Exemplo02.Database.pdb

@@ -37,14 +37,14 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         {
             var lista = _unit.AlunoRepository.BuscarPor(a =>
                 a.Nome.Contains(nomeBusca) && (a.GrupoId == idBusca || idBusca == null));
+            
+            //var viewModel = new AlunoViewModel()
+            //{
+            //    ListaGrupo = ListarGrupos(),
+            //    Alunos = lista
+            //};
 
-            var viewModel = new AlunoViewModel()
-            {
-                ListaGrupo = ListarGrupos(),
-                Alunos = lista
-            };
-
-            return View("Listar", viewModel);
+            return PartialView("_tabela", lista);//o método manda somente a lista de aluno
         }
 
         [HttpGet]

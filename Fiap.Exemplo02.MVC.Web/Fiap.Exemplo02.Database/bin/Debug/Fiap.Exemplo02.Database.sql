@@ -40,24 +40,6 @@ USE [$(DatabaseName)];
 
 
 GO
-PRINT N'Altering [dbo].[Aluno]...';
-
-
-GO
-ALTER TABLE [dbo].[Aluno] ALTER COLUMN [DataNascimento] DATETIME2 (7) NOT NULL;
-
-
-GO
-PRINT N'Altering [dbo].[Projeto]...';
-
-
-GO
-ALTER TABLE [dbo].[Projeto] ALTER COLUMN [DataInicio] DATETIME2 (7) NOT NULL;
-
-ALTER TABLE [dbo].[Projeto] ALTER COLUMN [DataTermino] DATETIME2 (7) NULL;
-
-
-GO
 PRINT N'Update complete.';
 
 
