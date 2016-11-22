@@ -74,6 +74,16 @@
 @section scripts{
     <script>
         $().ready(function () {
+            //esconder os botões de ações da tabela
+            $("td > button, td > a").css("visibility","hidden");
+
+            //Quando o mouse passar por cima da linha os botões são exibidos
+            $("tr").hover(function(){
+                $(this).find("button,a").css("visibility","visible");
+            }, function(){
+                $(this).find("button,a").css("visibility","hidden");
+            })
+
             //Selecionar o Select da busca de grupos
             $("#IdBusca").change(function () {
                 //seleciona o formulário e faz o submit
