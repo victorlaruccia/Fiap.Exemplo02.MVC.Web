@@ -1,0 +1,88 @@
+﻿@model List<Fiap.Exemplo02.MVC.Web.Models.Grupo>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h1>Lista de Grupos</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="@TempData["tipoMensagem"]">
+            <p>@TempData["mensagem"]</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Grupo</th>
+                    <th>Projeto</th>
+                    <th>Data Inicio</th>
+                    <th>Data Término</th>
+                    <th>Entregue</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Projeto.Nome</td>
+                        <td>@item.Projeto.DataInicio.ToShortDateString()</td>
+                        <td>@item.Projeto.DataTermino</td>
+                        <td>
+                            @{
+                                if (@item.Projeto.Entregue)
+                                {
+                                    @:Sim
+                                }
+                                else
+                                {
+                                    @:Não
+                                }
+                            }
+                        </td>
+                        
+                        <td>
+                            <button onclick="IDID.value=@item.Id" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+                                Excluir
+                            </button>                       
+                            @Html.ActionLink("Alterar", "Alterar", new { id = @item.Id }, new { @class="btn btn-primary btn-sm" })
+                        </td>                       
+
+                    </tr>
+                }                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Excluir</h4>
+            </div>
+            <div class="modal-body">
+                Realmente quer excluir?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Excluir", "Grupo"))
+                {
+                    <input type="hidden" id="IDID" name="id" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    @Helper.Submit("Excluir", "btn btn-danger btn-sm")
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

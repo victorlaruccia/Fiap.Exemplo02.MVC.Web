@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Fiap.Exemplo02.Database.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Aluno">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Bolsa" Type="Boolean" Nullable="false" />
+    <Property Name="Desconto" Type="Double" />
+    <Property Name="GrupoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Grupo" Relationship="Fiap.Exemplo02.Database.Model.FK_Aluno_Grupo" FromRole="Aluno" ToRole="Grupo" />
+    <NavigationProperty Name="Professor" Relationship="Fiap.Exemplo02.Database.Model.ProfessorAluno" FromRole="Aluno" ToRole="Professor" />
+  </EntityType>
+  <EntityContainer Name="PortalContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aluno" EntityType="Self.Aluno" />
+    <EntitySet Name="Grupo" EntityType="Fiap.Exemplo02.Database.Model.Grupo" />
+    <EntitySet Name="Projeto" EntityType="Fiap.Exemplo02.Database.Model.Projeto" />
+    <AssociationSet Name="FK_Projeto_Grupo" Association="Fiap.Exemplo02.Database.Model.FK_Projeto_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Projeto" EntitySet="Projeto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Aluno_Grupo" Association="Fiap.Exemplo02.Database.Model.FK_Aluno_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Aluno" EntitySet="Aluno" />
+    </AssociationSet>
+    <EntitySet Name="Professor" EntityType="Fiap.Exemplo02.Database.Model.Professor" />
+    <AssociationSet Name="ProfessorAluno" Association="Fiap.Exemplo02.Database.Model.ProfessorAluno">
+      <End Role="Aluno" EntitySet="Aluno" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Nota" Type="Double" />
+    <NavigationProperty Name="Projeto" Relationship="Fiap.Exemplo02.Database.Model.FK_Projeto_Grupo" FromRole="Grupo" ToRole="Projeto" />
+    <NavigationProperty Name="Aluno" Relationship="Fiap.Exemplo02.Database.Model.FK_Aluno_Grupo" FromRole="Grupo" ToRole="Aluno" />
+  </EntityType>
+  <EntityType Name="Projeto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DataInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataTermino" Type="DateTime" Precision="3" />
+    <Property Name="Entregue" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Grupo" Relationship="Fiap.Exemplo02.Database.Model.FK_Projeto_Grupo" FromRole="Projeto" ToRole="Grupo" />
+  </EntityType>
+  <Association Name="FK_Projeto_Grupo">
+    <End Type="Fiap.Exemplo02.Database.Model.Grupo" Role="Grupo" Multiplicity="1" />
+    <End Type="Fiap.Exemplo02.Database.Model.Projeto" Role="Projeto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projeto">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Aluno_Grupo">
+    <End Type="Fiap.Exemplo02.Database.Model.Grupo" Role="Grupo" Multiplicity="1" />
+    <End Type="Fiap.Exemplo02.Database.Model.Aluno" Role="Aluno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Aluno">
+        <PropertyRef Name="GrupoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Salario" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Aluno" Relationship="Fiap.Exemplo02.Database.Model.ProfessorAluno" FromRole="Professor" ToRole="Aluno" />
+  </EntityType>
+  <Association Name="ProfessorAluno">
+    <End Type="Fiap.Exemplo02.Database.Model.Aluno" Role="Aluno" Multiplicity="*" />
+    <End Type="Fiap.Exemplo02.Database.Model.Professor" Role="Professor" Multiplicity="*" />
+  </Association>
+</Schema>

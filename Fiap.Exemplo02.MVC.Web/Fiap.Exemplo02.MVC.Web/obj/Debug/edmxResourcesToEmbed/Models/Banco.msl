@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FiapExemplo02DatabaseModelStoreContainer" CdmEntityContainer="PortalContext">
+    <EntitySetMapping Name="Aluno">
+      <EntityTypeMapping TypeName="Fiap.Exemplo02.Database.Model.Aluno">
+        <MappingFragment StoreEntitySet="Aluno">
+          <ScalarProperty Name="GrupoId" ColumnName="GrupoId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="Bolsa" ColumnName="Bolsa" />
+          <ScalarProperty Name="Desconto" ColumnName="Desconto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupo">
+      <EntityTypeMapping TypeName="Fiap.Exemplo02.Database.Model.Grupo">
+        <MappingFragment StoreEntitySet="Grupo">
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projeto">
+      <EntityTypeMapping TypeName="Fiap.Exemplo02.Database.Model.Projeto">
+        <MappingFragment StoreEntitySet="Projeto">
+          <ScalarProperty Name="Entregue" ColumnName="Entregue" />
+          <ScalarProperty Name="DataTermino" ColumnName="DataTermino" />
+          <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professor">
+      <EntityTypeMapping TypeName="Fiap.Exemplo02.Database.Model.Professor">
+        <MappingFragment StoreEntitySet="Professor">
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProfessorAluno" TypeName="Fiap.Exemplo02.Database.Model.ProfessorAluno" StoreEntitySet="ProfessorAluno">
+      <EndProperty Name="Professor">
+        <ScalarProperty Name="Id" ColumnName="ProfessorId" />
+      </EndProperty>
+      <EndProperty Name="Aluno">
+        <ScalarProperty Name="Id" ColumnName="AlunoId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
